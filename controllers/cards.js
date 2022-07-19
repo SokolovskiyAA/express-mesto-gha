@@ -35,7 +35,12 @@ module.exports.deleteCard = (req, res) => {
       }
     })
     .then((card) => {
-      res.send(card);
+      if (card) {
+        res.send(card);
+      }
+      else {
+        res.status(status.NOTFOUND).send({ message: 'Карточка не найдена' });
+      }
     })
     .catch((err) => {
       if (err.name === 'ValidationError' || err.name === 'CastError') {
@@ -51,7 +56,12 @@ module.exports.putLike = (req, res, next) => {
   Card.findByIdAndUpdate(req.params.cardId, { $addToSet: { likes: req.user._id } }, { new: true })
     .populate('owner')
     .then((card) => {
-      res.send(card);
+      if (card) {
+        res.send(card);
+      }
+      else {
+        res.status(status.NOTFOUND).send({ message: 'Карточка не найдена' });
+      }
     })
     .catch((err) => {
       if (err.name === 'ValidationError' || err.name === 'CastError') {
@@ -67,7 +77,12 @@ module.exports.deleteLike = (req, res, next) => {
   Card.findByIdAndUpdate(req.params.cardId, { $pull: { likes: req.user._id } }, { new: true })
     .populate('owner')
     .then((card) => {
-      res.send(card);
+      if (card) {
+        res.send(card);
+      }
+      else {
+        res.status(status.NOTFOUND).send({ message: 'Карточка не найдена' });
+      }
     })
     .catch((err) => {
       if (err.name === 'ValidationError' || err.name === 'CastError') {
