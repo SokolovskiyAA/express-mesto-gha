@@ -29,11 +29,11 @@ module.exports.createCard = (req, res) => {
 module.exports.deleteCard = (req, res) => {
   Card.findById(req.params.cardId)
     .populate('owner')
-    .then((card) => {
-      if (String(card.owner._id) === req.user._id) {
-        return Card.findByIdAndRemove(req.params.cardId);
-      }
-    })
+    // .then((card) => {
+    //   if (String(card.owner._id) === req.user._id) {
+    //     return Card.findByIdAndRemove(req.params.cardId);
+    //   }
+    // })
     .then((card) => {
       if (card) {
         res.send(card);
