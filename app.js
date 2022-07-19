@@ -18,10 +18,6 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
 });
 
-// mongoose.connect('mongodb://localhost:27017/mestodb');
-// mongoose.connection.on('connected', () => console.log('Connected'));
-// mongoose.connection.on('error', (err) => console.log('Connection failed with - ', err));
-
 app.use((req, res, next) => {
   req.user = {
     _id: '62d0829c85d93c224fc9e049' // вставьте сюда _id созданного в предыдущем пункте пользователя
