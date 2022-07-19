@@ -5,17 +5,17 @@ const {
   createCard,
   deleteCard,
   putLike,
-  deleteLike
+  deleteLike,
 } = require('../controllers/cards');
 
-cardsRouter.get('/', getCards);// — возвращает все карточки
+cardsRouter.get('/', getCards); // — возвращает все карточки
 
-cardsRouter.post('/', createCard);//— создаёт карточку
+cardsRouter.post('/', createCard); // — создаёт карточку
 
-cardsRouter.delete('/:cardId', deleteCard);//— удаляет карточку по идентификатору
+cardsRouter.delete('/:cardId', deleteCard); // — удаляет карточку по идентификатору
 
-cardsRouter.put('/:cardId/likes', putLike);// - поставить лайк
+cardsRouter.put('/:cardId/likes', putLike); // - поставить лайк
 
-cardsRouter.delete('/:cardId/likes', deleteLike);// - удалить лайк
+cardsRouter.delete('/:cardId/likes', deleteLike); // - удалить лайк
 
 module.exports = { cardsRouter };
