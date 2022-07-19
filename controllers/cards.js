@@ -26,7 +26,8 @@ module.exports.createCard = (req, res) => {
 };
 
 module.exports.deleteCard = (req, res) => {
-  Card.findById(req.params.cardId)
+  Card.findByIdAndRemove(req.params.cardId)
+    .populate('owner')
     .then((card) => {
       if (card) {
         res.send(card);
