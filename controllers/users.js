@@ -14,16 +14,14 @@ module.exports.getUser = (req, res) => {
     .then((user) => {
       if (user) {
         res.send(user);
-      }
-      else {
+      } else {
         res.status(status.NOTFOUND).send({ message: 'Пользователь не найден' });
       }
     })
     .catch((err) => {
       if (err.name === 'ValidationError' || err.name === 'CastError') {
         res.status(status.ERROR).send({ message: 'Введены некорректные данные' });
-      }
-      else {
+      } else {
         res.status(status.INTERNALERROR).send({ message: 'Внутренняя ошибка сервера' });
       }
     });
@@ -36,8 +34,7 @@ module.exports.createUser = (req, res) => {
     .catch((err) => {
       if (err.name === 'ValidationError') {
         res.status(status.ERROR).send({ message: 'Введены некорректные данные' });
-      }
-      else {
+      } else {
         res.status(status.INTERNALERROR).send({ message: 'Внутренняя ошибка сервера' });
       }
     });
@@ -53,11 +50,9 @@ module.exports.updateProfile = (req, res) => {
     .catch((err) => {
       if (err.name === 'CastError') {
         res.status(status.NOTFOUND).send({ message: 'Пользователь не найден' });
-      }
-      else if (err.name === 'ValidationError') {
+      } else if (err.name === 'ValidationError') {
         res.status(status.ERROR).send({ message: 'Введены некорректные данные' });
-      }
-      else {
+      } else {
         res.status(status.INTERNALERROR).send({ message: 'Внутренняя ошибка сервера' });
       }
     });
@@ -73,11 +68,9 @@ module.exports.updateAvatar = (req, res) => {
     .catch((err) => {
       if (err.name === 'CastError') {
         res.status(status.NOTFOUND).send({ message: 'Пользователь не найден' });
-      }
-      else if (err.name === 'ValidationError') {
+      } else if (err.name === 'ValidationError') {
         res.status(status.ERROR).send({ message: 'Введены некорректные данные' });
-      }
-      else {
+      } else {
         res.status(status.INTERNALERROR).send({ message: 'Внутренняя ошибка сервера' });
       }
     });

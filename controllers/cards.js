@@ -19,8 +19,7 @@ module.exports.createCard = (req, res) => {
     .catch((err) => {
       if (err.name === 'ValidationError') {
         res.status(status.ERROR).send({ message: 'Введены некорректные данные' });
-      }
-      else {
+      } else {
         res.status(status.INTERNALERROR).send({ message: 'Внутренняя ошибка сервера' });
       }
     });
@@ -37,60 +36,53 @@ module.exports.deleteCard = (req, res) => {
     .then((card) => {
       if (card) {
         res.send(card);
-      }
-      else {
+      } else {
         res.status(status.NOTFOUND).send({ message: 'Карточка не найдена' });
       }
     })
     .catch((err) => {
       if (err.name === 'ValidationError' || err.name === 'CastError') {
         res.status(status.ERROR).send({ message: 'Введены некорректные данные' });
-      }
-      else {
+      } else {
         res.status(status.INTERNALERROR).send({ message: 'Внутренняя ошибка сервера' });
       }
     });
 };
 
-module.exports.putLike = (req, res, next) => {
+module.exports.putLike = (req, res) => {
   Card.findByIdAndUpdate(req.params.cardId, { $addToSet: { likes: req.user._id } }, { new: true })
     .populate('owner')
     .then((card) => {
       if (card) {
         res.send(card);
-      }
-      else {
+      } else {
         res.status(status.NOTFOUND).send({ message: 'Карточка не найдена' });
       }
     })
     .catch((err) => {
       if (err.name === 'ValidationError' || err.name === 'CastError') {
         res.status(status.ERROR).send({ message: 'Введены некорректные данные' });
-      }
-      else {
+      } else {
         res.status(status.INTERNALERROR).send({ message: 'Внутренняя ошибка сервера' });
       }
     });
 };
 
-module.exports.deleteLike = (req, res, next) => {
+module.exports.deleteLike = (req, res) => {
   Card.findByIdAndUpdate(req.params.cardId, { $pull: { likes: req.user._id } }, { new: true })
     .populate('owner')
     .then((card) => {
       if (card) {
         res.send(card);
-      }
-      else {
+      } else {
         res.status(status.NOTFOUND).send({ message: 'Карточка не найдена' });
       }
     })
     .catch((err) => {
       if (err.name === 'ValidationError' || err.name === 'CastError') {
         res.status(status.ERROR).send({ message: 'Введены некорректные данные' });
-      }
-      else {
+      } else {
         res.status(status.INTERNALERROR).send({ message: 'Внутренняя ошибка сервера' });
       }
     });
 };
-
