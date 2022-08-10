@@ -12,22 +12,22 @@ const {
 
 usersRouter.get('/', getUsers);
 
-router.get('/me', getSignedInUser);
+usersRouter.get('/me', getSignedInUser);
 
-router.get('/:userId', celebrate({
+usersRouter.get('/:userId', celebrate({
   params: Joi.object().keys({
     userId: Joi.string().required().hex().length(24),
   }),
 }), getUser);
 
-router.patch('/me', celebrate({
+usersRouter.patch('/me', celebrate({
   body: Joi.object().keys({
     name: Joi.string().required().min(2).max(30),
     about: Joi.string().required().min(2).max(30),
   }),
 }), updateProfile);
 
-router.patch('/me/avatar', celebrate({
+usersRouter.patch('/me/avatar', celebrate({
   body: Joi.object().keys({
     avatar: Joi.string().required().pattern(/(https?:\/\/)[a-zA-Z.:0-9-?]{2,}\.[a-z]{2,}([-a-zA-Z0-9@:%_+.~#?&=/]*)/),
   }),

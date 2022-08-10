@@ -1,4 +1,4 @@
-const status = require('../../../../Рабочий стол/express-mesto-gha-mainFAR/express-mesto-gha-mainFAR/utils/status');
+const status = require('../utils/status');
 
 class ForbiddenError extends Error {
   constructor(message) {
