@@ -1,5 +1,5 @@
 const { User } = require('../models/users');
-const status = require('../../../../Рабочий стол/express-mesto-gha-mainFAR/express-mesto-gha-mainFAR/utils/status');
+const status = require('../utils/status');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const NotFoundError = require('../errors/not-found-error');
