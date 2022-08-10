@@ -4,10 +4,9 @@ const { celebrate, Joi } = require('celebrate');
 const {
   getUsers,
   getUser,
-  createUser,
   updateAvatar,
   updateProfile,
-  getSignedInUser
+  getSignedInUser,
 } = require('../controllers/users');
 
 usersRouter.get('/', getUsers);
