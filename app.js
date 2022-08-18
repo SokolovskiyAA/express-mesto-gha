@@ -22,8 +22,8 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [
-  'https://http://mesto.sokolovskiy.students.nomoredomains.sbs',
-  'http://http://mesto.sokolovskiy.students.nomoredomains.sbs',
+  'https://mesto.sokolovskiy.students.nomoredomains.sbs',
+  'http://mesto.sokolovskiy.students.nomoredomains.sbs',
   'localhost:3000'
 ];
 
