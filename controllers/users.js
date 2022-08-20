@@ -62,6 +62,7 @@ module.exports.updateProfile = (req, res, next) => {
   const { name, about } = req.body;
   User.findOneAndUpdate({ _id: req.user._id }, { name, about }, { new: true, runValidators: true })
     .then((user) => {
+      console.log(user);
       res.status(status.OK).send({ user });
     })
     .catch((err) => {
