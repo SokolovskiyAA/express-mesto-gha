@@ -53,6 +53,13 @@ app.use(function (req, res, next) {
 
 app.use(requestLogger);
 
+// crash test
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 app.use('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
